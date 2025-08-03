@@ -147,8 +147,7 @@ export default function MenteeInterests({
 
       {/* Narrow Areas */}
       <div className="mb-8">
-        <h2 className="text-xl font-semibold mb-2">Narrow Areas of interests <span className="text-red-600">*</span>-
-                          54</h2>
+        <h2 className="text-base sm:text-xl font-semibold mb-2">Narrow Areas of interests <span className="text-red-600">*</span></h2>
         <input
           type="text"
           placeholder="Search narrow areas..."

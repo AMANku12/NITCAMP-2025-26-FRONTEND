@@ -98,7 +98,7 @@ export default function MenteeProfilePage() {
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <div className="bg-white border-b border-gray-100">
-        <div className="max-w-3xl mx-auto px-6 py-8">
+        <div className="max-w-3xl mx-auto px-2 sm:px-6 py-6 sm:py-8">
           <h1 className="text-2xl font-semibold text-center text-gray-900">
             My Profile (Mentee)
           </h1>
@@ -136,7 +136,7 @@ export default function MenteeProfilePage() {
 
         {/* Profile Information */}
         <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-8">
-          <div className="space-y-0">
+          <div className="space-y-0 text-xs sm:text-base">
             {renderReadOnlyField('Name', profileData.name)}
             {renderReadOnlyField('Email', profileData.email)}
             {renderReadOnlyField('Roll No', profileData.rollNo)}
@@ -151,7 +151,7 @@ export default function MenteeProfilePage() {
           <div className="flex justify-center mt-8">
             <button
               onClick={handleDeleteAccount}
-              className="px-8 py-3 bg-red-500 hover:bg-red-600 text-white rounded-full font-medium transition-colors duration-200"
+              className="px-4 sm:px-8 py-2 sm:py-3 bg-red-500 hover:bg-red-600 text-white rounded-full font-medium transition-colors duration-200 text-xs sm:text-base"
             >
               Delete My Account
             </button>

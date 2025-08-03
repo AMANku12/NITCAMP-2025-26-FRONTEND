@@ -58,57 +58,46 @@ const App = () => {
   const hideNavbarPaths = ["/home", "/adminpanel", "/adminlogin"];
   const shouldHideNavbar = hideNavbarPaths.includes(location.pathname);
   return (
-    <>
+    <div className="flex flex-col min-h-screen bg-white dark:bg-gray-900">
       {/* Show navbar on all pages EXCEPT /home page */}
       {!shouldHideNavbar && <Navbar />}
-      
-      <main className="min-h-[80vh] pt-0 ">
+      <main className="flex-1 pt-0 px-2 sm:px-4 md:px-8 lg:px-16 xl:px-32 w-full max-w-full">
         <Routes>
           {/* Public Routes */}
           <Route path="/home" element={<Home />} />
           <Route path="/" element={<Homepage />} />
           <Route path="/about" element={<About />} />
-          <Route path="/adminlogin" element={< Adminlogin/>} />
+          <Route path="/adminlogin" element={<Adminlogin />} />
           <Route path="/login" element={<Login />} />
-          
           {/* Protected Routes */}
           <Route element={<PrivateRoute />}>
             <Route path="/choice" element={<Choice />} />
-            <Route path="/menteeregister" element={<MenteeRegistrationForm/>} />
-            <Route path="/menteeinterests" element={< MenteeinterestsForm/>} />
-            <Route path="/mentoregister" element={<MentorRegistrationForm/>} />
-            <Route path="/mentorinterests" element={< MentorinterestsForm/>} />
+            <Route path="/menteeregister" element={<MenteeRegistrationForm />} />
+            <Route path="/menteeinterests" element={<MenteeinterestsForm />} />
+            <Route path="/mentoregister" element={<MentorRegistrationForm />} />
+            <Route path="/mentorinterests" element={<MentorinterestsForm />} />
           </Route>
-          
           <Route element={<PrivateRoute allowedRoles={["mentee"]} />}>
             <Route path="/menteeprofile" element={<Menteeprofile />} />
             <Route path="/menteedashboard" element={<MenteeDashboard />} />
             <Route path="/menteewelcomepage" element={<MenteeWelcomePage />} />
           </Route>
-          
           <Route element={<PrivateRoute allowedRoles={["mentor"]} />}>
             <Route path="/mentorprofile" element={<Mentorprofile />} />
             <Route path="/mentordashboard" element={<MentorDashboard />} />
             <Route path="/mentorwelcomepage" element={<MentorWelcomePage />} />
           </Route>
-
           <Route element={<PrivateRoute allowedRoles={["admin"]} />}>
             <Route path="/adminpanel" element={<AdminPanel />} />
           </Route>
-
           <Route element={<PrivateRoute allowedRoles={["mentor", "mentee"]} />}>
             <Route path="/profile" element={<Profile />} />
           </Route>
-          
-          
-          
-          <Route path="/matching" element={< MentorinterestsForm/>} />
-          
-          
+          <Route path="/matching" element={<MentorinterestsForm />} />
         </Routes>
       </main>
       <Footer />
-    </>
+    </div>
   );
 };
 

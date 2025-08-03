@@ -212,18 +212,18 @@ useEffect(() => {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white p-2 sm:p-0">
       <div className="w-full">
         {/* Form Container */}
         <div className="bg-white rounded-b-3xl shadow-2xl overflow-hidden">
-          <div className="p-8 lg:p-12">
+          <div className="p-4 sm:p-8 lg:p-12">
             <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold text-blue-900 mb-2">Mentor Registration</h2>
-              <p className="text-blue-700">Please provide the following details (all fields marked with * are compulsory)</p>
+              <h2 className="text-xl sm:text-3xl font-bold text-blue-900 mb-2">Mentor Registration</h2>
+              <p className="text-blue-700 text-xs sm:text-base">Please provide the following details (all fields marked with * are compulsory)</p>
             </div>
 
             <div className="space-y-8">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 relative">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-8 relative">
                 {/* Connector Line */}
                 <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-1 bg-blue-950 transform -translate-x-1/2 rounded-full">
                   <div className="absolute top-0 left-1/2 w-4 h-4 bg-blue-950 rounded-full transform -translate-x-1/2 border-4 border-white shadow-lg"></div>
@@ -287,7 +287,7 @@ useEffect(() => {
                         <button
                           type="button"
                           onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                          className={`flex items-center gap-2 px-3 py-3 rounded-l-2xl border-2 border-r-0 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-blue-100 min-w-[100px] ${
+                          className={`flex items-center gap-2 px-2 sm:px-3 py-2 sm:py-3 rounded-l-2xl border-2 border-r-0 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-blue-100 min-w-[80px] sm:min-w-[100px] ${
                             errors.phoneNo 
                               ? 'border-red-400 bg-red-50' 
                               : formData.phoneNo.trim() 
@@ -342,7 +342,7 @@ useEffect(() => {
                         name="phoneNo"
                         value={formData.phoneNo}
                         onChange={handleInputChange}
-                        className={`flex-1 px-4 py-3 rounded-r-2xl border-2 border-l-0 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-blue-100 ${
+                        className={`flex-1 px-2 sm:px-4 py-2 sm:py-3 rounded-r-2xl border-2 border-l-0 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-blue-100 ${
                           errors.phoneNo 
                             ? 'border-red-400 bg-red-50' 
                             : formData.phoneNo.trim() 
@@ -364,7 +364,7 @@ useEffect(() => {
                       name="nitcDegree"
                       value={formData.nitcDegree}
                       onChange={handleInputChange}
-                      className={`w-full px-4 py-2 rounded-xl border focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all text-sm bg-white shadow-sm ${
+                      className={`w-full px-2 sm:px-4 py-2 rounded-xl border focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all text-xs sm:text-sm bg-white shadow-sm ${
                         errors.nitcDegree 
                           ? 'border-red-400 focus:ring-red-300 bg-red-50' 
                           : formData.nitcDegree 
@@ -389,7 +389,7 @@ useEffect(() => {
                       name="department"
                       value={formData.department}
                       onChange={handleInputChange}
-                      className={`w-full px-4 py-2 rounded-xl border focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all text-sm bg-white shadow-sm ${
+                      className={`w-full px-2 sm:px-4 py-2 rounded-xl border focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all text-xs sm:text-sm bg-white shadow-sm ${
                         errors.department 
                           ? 'border-red-400 focus:ring-red-300 bg-red-50' 
                           : formData.department 
@@ -417,7 +417,7 @@ useEffect(() => {
                       name="yearGraduated"
                       value={formData.yearGraduated}
                       onChange={handleInputChange}
-                      className={`w-full px-4 py-2 rounded-xl border focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all text-sm bg-white shadow-sm ${
+                      className={`w-full px-2 sm:px-4 py-2 rounded-xl border focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all text-xs sm:text-sm bg-white shadow-sm ${
                         errors.yearGraduated 
                           ? 'border-red-400 focus:ring-red-300 bg-red-50' 
                           : formData.yearGraduated 
@@ -501,7 +501,7 @@ useEffect(() => {
                       onChange={handleInputChange}
                       min="1"
                       max="5"
-                      className={`w-full px-4 py-3 rounded-2xl border-2 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-blue-100 ${
+                      className={`w-full px-2 sm:px-4 py-2 sm:py-3 rounded-2xl border-2 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-blue-100 ${
                         errors.menteeCapacity 
                           ? 'border-red-400 bg-red-50' 
                           : formData.menteeCapacity.trim() 
@@ -520,7 +520,7 @@ useEffect(() => {
                 <button
                   type="button"
                   onClick={handleSubmit}
-                  className="group relative bg-gradient-to-r from-emerald-500 via-green-500 to-teal-500 text-white px-12 py-4 rounded-full font-bold text-lg shadow-2xl hover:shadow-emerald-500/25 transform hover:-translate-y-2 hover:scale-105 transition-all duration-500 ease-out overflow-hidden"
+                  className="group relative bg-gradient-to-r from-emerald-500 via-green-500 to-teal-500 text-white px-6 sm:px-12 py-2 sm:py-4 rounded-full font-bold text-base sm:text-lg shadow-2xl hover:shadow-emerald-500/25 transform hover:-translate-y-2 hover:scale-105 transition-all duration-500 ease-out overflow-hidden"
                 >
                   {/* Background Animation */}
                   <div className="absolute inset-0 bg-gradient-to-r from-emerald-600 via-green-600 to-teal-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>

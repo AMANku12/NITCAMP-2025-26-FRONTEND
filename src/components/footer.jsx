@@ -2,7 +2,7 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="bg-white dark:bg-neutral-900 text-sm text-neutral-600 dark:text-neutral-400 px-6 py-8 border-t dark:border-neutral-700">
+    <footer className="bg-white dark:bg-neutral-900 text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 px-2 sm:px-6 py-6 sm:py-8 border-t dark:border-neutral-700">
       <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-6 text-center sm:text-left">
         {/* Contact Section */}
         <div>

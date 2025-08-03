@@ -28,10 +28,10 @@ const MenteeDashboard = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100">
-      <div className="container mx-auto px-4 py-12">
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 p-2 sm:p-0">
+      <div className="container mx-auto px-2 sm:px-4 py-8 sm:py-12">
         <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
+          <h1 className="text-xl sm:text-4xl md:text-5xl font-bold text-gray-800 mb-4">
             Welcome, Mentee!
           </h1>
           <div className="w-24 h-1 bg-gradient-to-r from-yellow-400 to-blue-500 mx-auto mb-6"></div>
@@ -47,7 +47,7 @@ const MenteeDashboard = () => {
         <div className="flex justify-center mb-12">
           <button
             onClick={handleGetAssignedMentees}
-            className="px-6 py-3 bg-gradient-to-r from-indigo-600 to-blue-600 text-white font-semibold rounded-lg shadow-md hover:from-indigo-700 hover:to-blue-700 transition-all duration-300"
+            className="px-3 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-indigo-600 to-blue-600 text-white font-semibold rounded-lg shadow-md hover:from-indigo-700 hover:to-blue-700 transition-all duration-300 text-xs sm:text-base"
           >
             Get My Assigned Mentor
           </button>
@@ -60,7 +60,7 @@ const MenteeDashboard = () => {
         {/* Mentor Card if assigned */}
         {mentor && (
           <div
-            className="bg-white rounded-lg shadow-lg p-5 cursor-pointer hover:shadow-xl transition duration-200 max-w-md mx-auto"
+            className="bg-white rounded-lg shadow-lg p-3 sm:p-5 cursor-pointer hover:shadow-xl transition duration-200 max-w-md mx-auto text-xs sm:text-base"
             onClick={() => setShowDetails(!showDetails)}
           >
             <div className="flex items-center mb-4">
@@ -68,14 +68,14 @@ const MenteeDashboard = () => {
                 <img
                   src={mentor.user.photo_url}
                   alt={mentor.user.fullname}
-                  className="w-12 h-12 rounded-full object-cover border-2 border-indigo-200"
+                  className="w-8 h-8 sm:w-12 sm:h-12 rounded-full object-cover border-2 border-indigo-200"
                 />
               ) : (
-                <div className="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center text-indigo-600 font-bold text-lg">
+                <div className="w-8 h-8 sm:w-12 sm:h-12 bg-indigo-100 rounded-full flex items-center justify-center text-indigo-600 font-bold text-xs sm:text-lg">
                   {mentor.user.fullname.charAt(0).toUpperCase()}
                 </div>
               )}
-              <h2 className="ml-4 text-xl font-semibold text-gray-800">
+              <h2 className="ml-2 sm:ml-4 text-base sm:text-xl font-semibold text-gray-800">
                 {mentor.user.fullname}
               </h2>
             </div>

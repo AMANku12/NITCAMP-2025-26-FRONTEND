@@ -32,21 +32,21 @@ export default function Matchmaking() {
   };
 
   return (
-    <div className="text-white p-4 sm:p-6 md:p-8 bg-black min-h-screen font-sans">
-      <h1 className="text-2xl sm:text-3xl font-bold mb-6 text-center">Matchmaking</h1>
+    <div className="text-white p-2 sm:p-4 md:p-8 bg-black min-h-screen font-sans">
+      <h1 className="text-lg sm:text-2xl md:text-3xl font-bold mb-4 sm:mb-6 text-center">Matchmaking</h1>
 
       {/* Match Users Button */}
-      <div className="flex justify-center mb-8">
+      <div className="flex justify-center mb-6 sm:mb-8">
         <button
           onClick={handleMatchUsers}
           disabled={isLoading}
-          className={`px-8 py-4 bg-white text-black rounded-xl font-semibold text-lg transition-all duration-200 ${
+          className={`px-4 sm:px-8 py-2 sm:py-4 bg-white text-black rounded-xl font-semibold text-xs sm:text-lg transition-all duration-200 ${
             isLoading ? "scale-95 opacity-50 cursor-not-allowed" : "hover:bg-gray-200 scale-100"
           }`}
         >
           {isLoading ? (
             <div className="flex items-center justify-center">
-              <div className="animate-spin rounded-full h-6 w-6 border-t-2 border-b-2 border-gray-900 mr-2"></div>
+              <div className="animate-spin rounded-full h-4 w-4 sm:h-6 sm:w-6 border-t-2 border-b-2 border-gray-900 mr-2"></div>
               Matching...
             </div>
           ) : (
@@ -57,21 +57,21 @@ export default function Matchmaking() {
 
       {/* Error or No Matches Message */}
       {errorMessage && (
-        <div className="text-red-500 text-center mb-6 text-sm sm:text-base">{errorMessage}</div>
+        <div className="text-red-500 text-center mb-4 sm:mb-6 text-xs sm:text-base">{errorMessage}</div>
       )}
 
       {/* Matched Users Table */}
       {matchedUsers.length > 0 && (
-        <div className="bg-gray-900 rounded-xl p-4 sm:p-6 shadow-lg max-w-4xl mx-auto">
-          <h2 className="text-xl sm:text-2xl font-semibold mb-4 text-center">Newly Matched Users</h2>
+        <div className="bg-gray-900 rounded-xl p-2 sm:p-4 shadow-lg max-w-md sm:max-w-4xl mx-auto">
+          <h2 className="text-base sm:text-xl font-semibold mb-2 sm:mb-4 text-center">Newly Matched Users</h2>
           <div className="overflow-x-auto">
-            <table className="w-full text-left border-collapse text-sm sm:text-base">
+            <table className="w-full text-left border-collapse text-xs sm:text-base">
               <thead>
                 <tr className="bg-gray-800">
-                  <th className="p-3 font-semibold">Mentee ID</th>
-                  <th className="p-3 font-semibold">Mentor ID</th>
-                  <th className="p-3 font-semibold">Common Areas</th>
-                  <th className="p-3 font-semibold">Matched Date</th>
+                  <th className="p-2 sm:p-3 font-semibold">Mentee ID</th>
+                  <th className="p-2 sm:p-3 font-semibold">Mentor ID</th>
+                  <th className="p-2 sm:p-3 font-semibold">Common Areas</th>
+                  <th className="p-2 sm:p-3 font-semibold">Matched Date</th>
                 </tr>
               </thead>
               <tbody>
@@ -80,10 +80,10 @@ export default function Matchmaking() {
                     key={match.id}
                     className={`border-b border-gray-700 ${index % 2 === 0 ? "bg-gray-900" : "bg-gray-850"}`}
                   >
-                    <td className="p-3">{match.mentee_user_id}</td>
-                    <td className="p-3">{match.mentor_user_id}</td>
-                    <td className="p-3">{match.common_areas.join(", ")}</td>
-                    <td className="p-3">{new Date(match.createdAt).toLocaleDateString()}</td>
+                    <td className="p-2 sm:p-3">{match.mentee_user_id}</td>
+                    <td className="p-2 sm:p-3">{match.mentor_user_id}</td>
+                    <td className="p-2 sm:p-3">{match.common_areas.join(", ")}</td>
+                    <td className="p-2 sm:p-3">{new Date(match.createdAt).toLocaleDateString()}</td>
                   </tr>
                 ))}
               </tbody>

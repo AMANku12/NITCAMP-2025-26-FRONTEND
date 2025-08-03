@@ -237,24 +237,24 @@ function MenteeRegistrationForm() {
   // Loading state
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-white flex items-center justify-center">
+      <div className="min-h-screen bg-white flex items-center justify-center p-2 sm:p-0">
         <div className="text-center">
-          <Loader2 className="w-12 h-12 animate-spin text-blue-600 mx-auto mb-4" />
-          <p className="text-blue-700 text-lg">Loading your information...</p>
+          <Loader2 className="w-8 h-8 sm:w-12 sm:h-12 animate-spin text-blue-600 mx-auto mb-4" />
+          <p className="text-blue-700 text-base sm:text-lg">Loading your information...</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white p-2 sm:p-0">
       <div className="w-full">
         {/* Form Container */}
         <div className="bg-white rounded-b-3xl shadow-2xl overflow-hidden">
-          <div className="p-8 lg:p-12">
+          <div className="p-4 sm:p-8 lg:p-12">
             <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold text-blue-900 mb-2">Mentee Registration</h2>
-              <p className="text-blue-700">Please provide the following details (all fields marked with * are compulsory)</p>
+              <h2 className="text-xl sm:text-3xl font-bold text-blue-900 mb-2">Mentee Registration</h2>
+              <p className="text-blue-700 text-xs sm:text-base">Please provide the following details (all fields marked with * are compulsory)</p>
             </div>
 
             {/* API Error Display */}
@@ -272,7 +272,7 @@ function MenteeRegistrationForm() {
             )}
 
             <div className="space-y-8">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 relative">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-8 relative">
                 {/* Connector Line */}
                 <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-1 bg-blue-950 transform -translate-x-1/2 rounded-full">
                   <div className="absolute top-0 left-1/2 w-4 h-4 bg-blue-950 rounded-full transform -translate-x-1/2 border-4 border-white shadow-lg"></div>
@@ -291,7 +291,7 @@ function MenteeRegistrationForm() {
                       name="name"
                       value={formData.name}
                       disabled
-                      className="w-full px-4 py-3 rounded-2xl border-2 bg-gray-100 text-gray-700 cursor-not-allowed"
+                      className="w-full px-2 sm:px-4 py-2 sm:py-3 rounded-2xl border-2 bg-gray-100 text-gray-700 cursor-not-allowed text-xs sm:text-base"
                       placeholder="Pre-filled from system"
                     />
                   </div>
@@ -306,7 +306,7 @@ function MenteeRegistrationForm() {
                       name="phoneNo"
                       value={formData.phoneNo}
                       onChange={handleInputChange}
-                      className={`w-full px-4 py-3 rounded-2xl border-2 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-blue-100 ${
+                      className={`w-full px-2 sm:px-4 py-2 sm:py-3 rounded-2xl border-2 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-blue-100 text-xs sm:text-base ${
                         errors.phoneNo 
                           ? 'border-red-400 bg-red-50' 
                           : formData.phoneNo.trim() 
@@ -328,7 +328,7 @@ function MenteeRegistrationForm() {
                       name="department"
                       value={formData.department}
                       disabled
-                      className="w-full px-4 py-3 rounded-2xl border-2 bg-gray-100 text-gray-700 cursor-not-allowed"
+                      className="w-full px-2 sm:px-4 py-2 sm:py-3 rounded-2xl border-2 bg-gray-100 text-gray-700 cursor-not-allowed text-xs sm:text-base"
                       placeholder="Pre-filled from system"
                     />
                   </div>
@@ -343,7 +343,7 @@ function MenteeRegistrationForm() {
                       name="yearOfAdmission"
                       value={formData.yearOfAdmission}
                       disabled
-                      className="w-full px-4 py-3 rounded-2xl border-2 bg-gray-100 text-gray-700 cursor-not-allowed"
+                      className="w-full px-2 sm:px-4 py-2 sm:py-3 rounded-2xl border-2 bg-gray-100 text-gray-700 cursor-not-allowed text-xs sm:text-base"
                       placeholder="Pre-filled from system"
                     />
                   </div>
@@ -358,7 +358,7 @@ function MenteeRegistrationForm() {
                       name="degree"
                       value={formData.degree}
                       disabled
-                      className="w-full px-4 py-3 rounded-2xl border-2 bg-gray-100 text-gray-700 cursor-not-allowed"
+                      className="w-full px-2 sm:px-4 py-2 sm:py-3 rounded-2xl border-2 bg-gray-100 text-gray-700 cursor-not-allowed text-xs sm:text-base"
                       placeholder="Pre-filled from system"
                     />
                   </div>
@@ -391,7 +391,7 @@ function MenteeRegistrationForm() {
                       name="personalEmail"
                       value={formData.personalEmail}
                       onChange={handleInputChange}
-                      className={`w-full px-4 py-3 rounded-2xl border-2 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-blue-100 ${
+                      className={`w-full px-2 sm:px-4 py-2 sm:py-3 rounded-2xl border-2 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-blue-100 text-xs sm:text-base ${
                         errors.personalEmail 
                           ? 'border-red-400 bg-red-50' 
                           : formData.personalEmail.trim() 
@@ -413,7 +413,7 @@ function MenteeRegistrationForm() {
                       value={formData.expectations}
                       onChange={handleInputChange}
                       rows={6}
-                      className={`w-full px-4 py-3 rounded-2xl border-2 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-blue-100 resize-none ${
+                      className={`w-full px-2 sm:px-4 py-2 sm:py-3 rounded-2xl border-2 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-blue-100 resize-none text-xs sm:text-base ${
                         formData.expectations.trim() 
                           ? 'border-blue-300 bg-blue-50' 
                           : 'border-gray-200 focus:border-blue-400'
@@ -430,7 +430,7 @@ function MenteeRegistrationForm() {
                   type="button"
                   onClick={handleReset}
                   disabled={isSubmitting}
-                  className={`px-8 py-3 rounded-full font-medium transition-all duration-300 hover:shadow-lg ${
+                  className={`px-4 sm:px-8 py-2 sm:py-3 rounded-full font-medium transition-all duration-300 hover:shadow-lg text-xs sm:text-base ${
                     isSubmitting 
                       ? 'bg-gray-400 cursor-not-allowed' 
                       : 'bg-gray-500 hover:bg-gray-600 text-white'
@@ -442,7 +442,7 @@ function MenteeRegistrationForm() {
                 <button
                   type="button"
                   onClick={handleSubmit}
-                  className={`group relative px-12 py-4 rounded-full font-bold text-lg shadow-2xl transform transition-all duration-500 ease-out overflow-hidden bg-gradient-to-r from-emerald-500 via-green-500 to-teal-500 text-white hover:shadow-emerald-500/25 hover:-translate-y-2 hover:scale-105`}
+                  className={`group relative px-6 sm:px-12 py-2 sm:py-4 rounded-full font-bold text-base sm:text-lg shadow-2xl transform transition-all duration-500 ease-out overflow-hidden bg-gradient-to-r from-emerald-500 via-green-500 to-teal-500 text-white hover:shadow-emerald-500/25 hover:-translate-y-2 hover:scale-105`}
                 >
                   {/* Background Animation */}
                   <div className="absolute inset-0 bg-gradient-to-r from-emerald-600 via-green-600 to-teal-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>

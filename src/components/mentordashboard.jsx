@@ -104,13 +104,11 @@ const MentorDashboard = () => {
                       {mentee.user.fullname}
                     </h3>
                   </div>
-                  <p className="text-gray-600 mb-2">
-                    <span className="font-medium">Broad Areas:</span>{" "}
-                    {mentee.broad_area_of_interest?.join(", ") || "Not specified"}
+                     <p className="text-gray-600 mb-2">
+                       <span className="font-medium">Broad Areas:</span> {mentee.broad_area_of_interest?.join(", ") || "Not specified"}
                   </p>
-                  <p className="text-gray-600">
-                    <span className="font-medium">Narrow Areas:</span>{" "}
-                    {mentee.narrow_area_of_interest?.join(", ") || "Not specified"}
+                     <p className="text-gray-600">
+                       <span className="font-medium">Narrow Areas:</span> {mentee.narrow_area_of_interest?.join(", ") || "Not specified"}
                   </p>
                   {expandedMenteeId === mentee.id && (
                     <div className="mt-4 pt-4 border-t border-gray-200">

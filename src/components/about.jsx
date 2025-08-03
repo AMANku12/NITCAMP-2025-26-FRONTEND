@@ -44,7 +44,7 @@ const About = () => {
     <div className="min-h-screen bg-gray-50">
       {/* Add top padding to account for fixed navbar */}
       <div className="pt-20 pb-16">
-        <div className="max-w-3xl mx-auto px-4">
+        <div className="max-w-3xl mx-auto px-2 sm:px-4">
           {/* Intro Section */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -56,11 +56,7 @@ const About = () => {
               About NITCAMP
             </h1>
             <p className="text-gray-700 text-center leading-relaxed">
-              NITCAMP is a mentorship and collaboration platform built for the
-              NIT Calicut community. It empowers students, alumni, and faculty
-              to connect based on shared interests, enabling meaningful
-              mentor-mentee relationships, idea sharing, and career guidance —
-              all within a trusted academic environment.
+              NITCAMP is a mentorship and collaboration platform built for the NIT Calicut community. It empowers students, alumni, and faculty to connect based on shared interests, enabling meaningful mentor-mentee relationships, idea sharing, and career guidance — all within a trusted academic environment.
             </p>
           </motion.div>
 
@@ -75,7 +71,7 @@ const About = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="rounded-4xl overflow-hidden shadow-md bg-white border border-blue-100"
+                className="rounded-4xl overflow-hidden shadow-md bg-white border border-blue-100 text-xs sm:text-base"
               >
                 
                 <button
@@ -84,7 +80,7 @@ const About = () => {
                   aria-expanded={activeIndex === index}
                   aria-controls={`faq-${index}`}
                 >
-                  <span className="text-[#1e3a8a] text-md pr-4">{faq.question}</span>
+                  <span className="text-[#1e3a8a] text-xs sm:text-md pr-4">{faq.question}</span>
                   <motion.svg
                     className="w-5 h-5 text-[#1e3a8a] flex-shrink-0"
                     fill="none"

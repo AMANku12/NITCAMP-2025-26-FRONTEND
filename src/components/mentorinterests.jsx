@@ -88,22 +88,22 @@ export default function MentorInterests({ onBack }) {
   };
 
   return (
-    <div className="min-h-screen bg-white p-6">
-      <h1 className="text-2xl font-bold mb-6">Mentor Interests</h1>
+    <div className="min-h-screen bg-white p-2 sm:p-6 text-xs sm:text-base">
+      <h1 className="text-base sm:text-2xl font-bold mb-6">Mentor Interests</h1>
 
       {/* Broad Areas */}
       <section className="mb-8">
-        <h2 className="font-semibold mb-2">Broad Areas of Expertise <span className="text-red-600">*</span></h2>
+        <h2 className="font-semibold mb-2 text-xs sm:text-base">Broad Areas of Expertise <span className="text-red-600">*</span></h2>
         <input
           type="text"
           placeholder="Search broad areas..."
           value={searchBroad}
           onChange={e => setSearchBroad(e.target.value)}
-          className="w-full p-2 border rounded mb-3"
+          className="w-full p-1 sm:p-2 border rounded mb-2 sm:mb-3 text-xs sm:text-base"
         />
         <div className="border rounded max-h-60 overflow-auto p-3">
           {filteredBroad.map(area => (
-            <label key={area} className="block mb-1">
+            <label key={area} className="block mb-1 text-xs sm:text-base">
               <input
                 type="checkbox"
                 checked={selectedBroad.includes(area)}
@@ -118,7 +118,7 @@ export default function MentorInterests({ onBack }) {
           {selectedBroad.map(a => (
             <span
               key={a}
-              className="px-3 py-1 bg-blue-100 rounded-full text-sm"
+              className="px-2 sm:px-3 py-1 bg-blue-100 rounded-full text-xs sm:text-sm"
             >
               {a}
             </span>
@@ -128,17 +128,17 @@ export default function MentorInterests({ onBack }) {
 
       {/* Narrow Areas */}
       <section className="mb-8">
-        <h2 className="font-semibold mb-2">Narrow Areas of Expertise <span className="text-red-600">*</span></h2>
+        <h2 className="font-semibold mb-2 text-xs sm:text-base">Narrow Areas of Expertise <span className="text-red-600">*</span></h2>
         <input
           type="text"
           placeholder="Search narrow areas..."
           value={searchNarrow}
           onChange={e => setSearchNarrow(e.target.value)}
-          className="w-full p-2 border rounded mb-3"
+          className="w-full p-1 sm:p-2 border rounded mb-2 sm:mb-3 text-xs sm:text-base"
         />
         <div className="border rounded max-h-60 overflow-auto p-3">
           {filteredNarrow.map(area => (
-            <label key={area} className="block mb-1">
+            <label key={area} className="block mb-1 text-xs sm:text-base">
               <input
                 type="checkbox"
                 checked={selectedNarrow.includes(area)}
@@ -153,7 +153,7 @@ export default function MentorInterests({ onBack }) {
           {selectedNarrow.map(a => (
             <span
               key={a}
-              className="px-3 py-1 bg-green-100 rounded-full text-sm"
+              className="px-2 sm:px-3 py-1 bg-green-100 rounded-full text-xs sm:text-sm"
             >
               {a}
             </span>
@@ -165,13 +165,13 @@ export default function MentorInterests({ onBack }) {
       <div className="flex justify-between">
         <button
           onClick={() => navigate(-1)}
-          className="px-4 py-2 bg-gray-300 rounded"
+          className="px-2 sm:px-4 py-1 sm:py-2 bg-gray-300 rounded text-xs sm:text-base"
         >
           ← Back
         </button>
         <button
           onClick={handleSubmit}
-          className="px-6 py-2 bg-blue-600 text-white rounded"
+          className="px-4 sm:px-6 py-1 sm:py-2 bg-blue-600 text-white rounded text-xs sm:text-base"
         >
           Submit
         </button>

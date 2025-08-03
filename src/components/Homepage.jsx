@@ -100,7 +100,7 @@ const Homepage = () => {
 
       {/* Hero Section with Image and Welcome Text */}
       <section className="relative">
-        <div className="relative w-full h-96 overflow-hidden">
+        <div className="relative w-full h-64 sm:h-96 overflow-hidden">
           <img
             src={nitImage}
             alt="NIT Calicut"
@@ -108,7 +108,7 @@ const Homepage = () => {
           />
           <div className="absolute inset-0 bg-black/60 flex items-center justify-center">
             <h2
-              className="text-white text-5xl font-bold text-center px-4"
+              className="text-white text-3xl sm:text-5xl font-bold text-center px-2 sm:px-4"
               style={{ fontFamily: 'Georgia, serif', letterSpacing: '2px' }}
             >
               <Typewriter

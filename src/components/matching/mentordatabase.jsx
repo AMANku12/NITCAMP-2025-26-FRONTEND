@@ -23,52 +23,52 @@ export default function MentorsDatabase({ onBack }) {
 
   if (loading) {
     return (
-      <div className="text-white p-4">
-        <div className="flex items-center justify-between mb-4">
-          <h2 className="text-2xl font-bold">Mentors Database</h2>
-          <button onClick={onBack} className="px-6 py-2 bg-white text-black rounded-full hover:bg-gray-100 transition-colors font-medium">
+      <div className="text-white p-2 sm:p-4">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-2 sm:mb-4 gap-2 sm:gap-3">
+          <h2 className="text-lg sm:text-2xl font-bold">Mentors Database</h2>
+          <button onClick={onBack} className="px-4 sm:px-6 py-1 sm:py-2 bg-white text-black rounded-full hover:bg-gray-100 transition-colors font-medium text-xs sm:text-base">
             Back
           </button>
         </div>
-        <div className="text-center text-gray-300 py-10">Loading...</div>
+        <div className="text-center text-gray-300 py-6 sm:py-10 text-xs sm:text-base">Loading...</div>
       </div>
     );
   }
 
   if (!mentors.length) {
     return (
-      <div className="text-white p-4">
-        <div className="flex items-center justify-between mb-4">
-          <h2 className="text-2xl font-bold">Mentors Database</h2>
-          <button onClick={onBack} className="px-6 py-2 bg-white text-black rounded-full hover:bg-gray-100 transition-colors font-medium">
+      <div className="text-white p-2 sm:p-4">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-2 sm:mb-4 gap-2 sm:gap-3">
+          <h2 className="text-lg sm:text-2xl font-bold">Mentors Database</h2>
+          <button onClick={onBack} className="px-4 sm:px-6 py-1 sm:py-2 bg-white text-black rounded-full hover:bg-gray-100 transition-colors font-medium text-xs sm:text-base">
             Back
           </button>
         </div>
-        <div className="text-center text-gray-300 py-10">No mentors found.</div>
+        <div className="text-center text-gray-300 py-6 sm:py-10 text-xs sm:text-base">No mentors found.</div>
       </div>
     );
   }
 
   return (
-    <div className="text-white p-4">
+    <div className="text-white p-2 sm:p-4">
       {/* Header with Back Button */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4 gap-3">
-        <h2 className="text-2xl font-bold">Mentors Database</h2>
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-2 sm:mb-4 gap-2 sm:gap-3">
+        <h2 className="text-lg sm:text-2xl font-bold">Mentors Database</h2>
         <button 
           onClick={onBack} 
-          className="px-6 py-2 bg-white text-black rounded-full hover:bg-gray-100 transition-colors font-medium"
+          className="px-4 sm:px-6 py-1 sm:py-2 bg-white text-black rounded-full hover:bg-gray-100 transition-colors font-medium text-xs sm:text-base"
         >
           Back
         </button>
       </div>
       
       {/* Mobile/Small Tablet view - Card layout */}
-      <div className="block lg:hidden space-y-4">
+      <div className="block lg:hidden space-y-2 sm:space-y-4">
         {mentors.map((mentor, idx) => (
-          <div key={mentor.id || idx} className="bg-white text-black rounded-xl p-4">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm">
-              <div className="sm:col-span-2 pb-2 mb-2 border-b">
-                <span className="font-bold text-lg">#{idx + 1} - {mentor.user?.fullname || "-"}</span>
+          <div key={mentor.id || idx} className="bg-white text-black rounded-xl p-2 sm:p-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-1 sm:gap-2 text-xs sm:text-sm">
+              <div className="sm:col-span-2 pb-1 sm:pb-2 mb-1 sm:mb-2 border-b">
+                <span className="font-bold text-xs sm:text-lg">#{idx + 1} - {mentor.user?.fullname || "-"}</span>
               </div>
               <div><span className="font-medium">Email:</span> {mentor.user?.email || "-"}</div>
               <div><span className="font-medium">Department Code:</span> {mentor.department_code || "-"}</div>
@@ -85,37 +85,37 @@ export default function MentorsDatabase({ onBack }) {
       {/* Desktop view - Responsive Table layout */}
       <div className="hidden lg:block">
         <div className="overflow-x-auto">
-          <table className="w-full text-black bg-white rounded-xl overflow-hidden">
+          <table className="w-full text-black bg-white rounded-xl overflow-hidden text-xs sm:text-sm">
             <thead className="bg-gray-200 text-xs">
               <tr>
-                <th className="px-3 py-3 text-left font-medium">Sl.no</th>
-                <th className="px-3 py-3 text-left font-medium min-w-[150px]">Name</th>
-                <th className="px-3 py-3 text-left font-medium min-w-[200px]">Email</th>
-                <th className="px-3 py-3 text-left font-medium min-w-[120px]">Degree code</th>
-                <th className="px-3 py-3 text-left font-medium min-w-[120px]">Department code</th>
-                <th className="px-3 py-3 text-left font-medium min-w-[100px]">Year Graduated</th>
-                <th className="px-3 py-3 text-left font-medium min-w-[80px]">Mentee Capacity</th>
-                <th className="px-3 py-3 text-left font-medium min-w-[180px]">Broad Areas of Interest</th>
-                <th className="px-3 py-3 text-left font-medium min-w-[180px]">Narrow Areas of Interest</th>
+                <th className="px-2 sm:px-3 py-2 sm:py-3 text-left font-medium">Sl.no</th>
+                <th className="px-2 sm:px-3 py-2 sm:py-3 text-left font-medium min-w-[100px] sm:min-w-[150px]">Name</th>
+                <th className="px-2 sm:px-3 py-2 sm:py-3 text-left font-medium min-w-[120px] sm:min-w-[200px]">Email</th>
+                <th className="px-2 sm:px-3 py-2 sm:py-3 text-left font-medium min-w-[80px] sm:min-w-[120px]">Degree code</th>
+                <th className="px-2 sm:px-3 py-2 sm:py-3 text-left font-medium min-w-[80px] sm:min-w-[120px]">Department code</th>
+                <th className="px-2 sm:px-3 py-2 sm:py-3 text-left font-medium min-w-[70px] sm:min-w-[100px]">Year Graduated</th>
+                <th className="px-2 sm:px-3 py-2 sm:py-3 text-left font-medium min-w-[60px] sm:min-w-[80px]">Mentee Capacity</th>
+                <th className="px-2 sm:px-3 py-2 sm:py-3 text-left font-medium min-w-[120px] sm:min-w-[180px]">Broad Areas of Interest</th>
+                <th className="px-2 sm:px-3 py-2 sm:py-3 text-left font-medium min-w-[120px] sm:min-w-[180px]">Narrow Areas of Interest</th>
               </tr>
             </thead>
             <tbody>
               {mentors.map((mentor, idx) => (
-                <tr key={mentor.id || idx} className="text-sm border-b border-gray-100 hover:bg-gray-50">
-                  <td className="px-3 py-3">{idx + 1}</td>
-                  <td className="px-3 py-3 font-medium">{mentor.user?.fullname || "-"}</td>
-                  <td className="px-3 py-3 break-words">{mentor.user?.email || "-"}</td>
-                  <td className="px-3 py-3">{mentor.highest_degree_at_nitc_code || "-"}</td>
-                  <td className="px-3 py-3">{mentor.department_code || "-"}</td>
-                  <td className="px-3 py-3">{mentor.year_graduated || "-"}</td>
-                  <td className="px-3 py-3">{mentor.mentee_capacity || "-"}</td>
-                  <td className="px-3 py-3">
-                    <div className="max-w-[200px]">
+                <tr key={mentor.id || idx} className="border-b border-gray-100 hover:bg-gray-50">
+                  <td className="px-2 sm:px-3 py-2 sm:py-3">{idx + 1}</td>
+                  <td className="px-2 sm:px-3 py-2 sm:py-3 font-medium">{mentor.user?.fullname || "-"}</td>
+                  <td className="px-2 sm:px-3 py-2 sm:py-3 break-words">{mentor.user?.email || "-"}</td>
+                  <td className="px-2 sm:px-3 py-2 sm:py-3">{mentor.highest_degree_at_nitc_code || "-"}</td>
+                  <td className="px-2 sm:px-3 py-2 sm:py-3">{mentor.department_code || "-"}</td>
+                  <td className="px-2 sm:px-3 py-2 sm:py-3">{mentor.year_graduated || "-"}</td>
+                  <td className="px-2 sm:px-3 py-2 sm:py-3">{mentor.mentee_capacity || "-"}</td>
+                  <td className="px-2 sm:px-3 py-2 sm:py-3">
+                    <div className="max-w-[120px] sm:max-w-[200px]">
                       {(mentor.broad_area_of_expertise || []).join(", ") || "-"}
                     </div>
                   </td>
-                  <td className="px-3 py-3">
-                    <div className="max-w-[200px]">
+                  <td className="px-2 sm:px-3 py-2 sm:py-3">
+                    <div className="max-w-[120px] sm:max-w-[200px]">
                       {(mentor.narrow_area_of_expertise || []).join(", ") || "-"}
                     </div>
                   </td>
