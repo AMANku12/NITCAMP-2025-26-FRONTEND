@@ -70,12 +70,10 @@ export default function MatchingDashboard() {
     }
   };
 
-
   return (
     <div className="text-white p-2 sm:p-4 md:p-8 bg-black min-h-screen">
       <h1 className="text-lg sm:text-2xl md:text-3xl font-bold mb-4 sm:mb-6">Matching Dashboard</h1>
       
-      {/* Buttons */}
       <div className="flex flex-col sm:flex-row flex-wrap gap-2 sm:gap-4 mb-6 sm:mb-8">
         <button
           onClick={getMatchedUsers}
@@ -97,14 +95,12 @@ export default function MatchingDashboard() {
         </button>
       </div>
 
-      {/* Loading State */}
       {isLoading && (
         <div className="flex justify-center items-center">
           <div className="animate-spin rounded-full h-8 w-8 sm:h-12 sm:w-12 border-t-4 border-b-4 border-white"></div>
         </div>
       )}
 
-      {/* Matched Users Table */}
       {view === 'matchedUsers' && !isLoading && (
         <div className="bg-gray-900 rounded-xl p-2 sm:p-6 shadow-lg">
           <h2 className="text-base sm:text-xl font-semibold mb-2 sm:mb-4">Matched Users</h2>
@@ -129,10 +125,8 @@ export default function MatchingDashboard() {
                     >
                       <td className="p-2 sm:p-3">{match.mentor_user_id}</td>
                       <td className="p-2 sm:p-3">{match.mentee_user_id}</td>
-                      <td className="p-2 sm:p-3">{match.common_areas.join(', ')}</td>
-                      <td className="p-2 sm:p-3">
-                        {new Date(match.createdAt).toLocaleDateString()}
-                      </td>
+                      <td className="p-2 sm:p-3 whitespace-normal">{match.common_areas.join(', ')}</td>
+                      <td className="p-2 sm:p-3">{new Date(match.createdAt).toLocaleDateString()}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -142,7 +136,6 @@ export default function MatchingDashboard() {
         </div>
       )}
 
-      {/* Unmatched Mentees Table */}
       {view === 'unmatchedMentees' && !isLoading && (
         <div className="bg-gray-900 rounded-xl p-2 sm:p-6 shadow-lg">
           <h2 className="text-base sm:text-xl font-semibold mb-2 sm:mb-4">Unmatched Mentees</h2>
@@ -165,8 +158,8 @@ export default function MatchingDashboard() {
                       className={`border-b border-gray-700 ${index % 2 === 0 ? 'bg-gray-900' : 'bg-gray-850'}`}
                     >
                       <td className="p-2 sm:p-3">{mentee.user_id}</td>
-                      <td className="p-2 sm:p-3">{mentee.broad_area_of_interest || 'N/A'}</td>
-                      <td className="p-2 sm:p-3">{mentee.narrow_area_of_interest || 'N/A'}</td>
+                      <td className="p-2 sm:p-3 whitespace-normal">{mentee.broad_area_of_interest || 'N/A'}</td>
+                      <td className="p-2 sm:p-3 whitespace-normal">{mentee.narrow_area_of_interest || 'N/A'}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -176,7 +169,6 @@ export default function MatchingDashboard() {
         </div>
       )}
 
-      {/* Unmatched Mentors Table */}
       {view === 'unmatchedMentors' && !isLoading && (
         <div className="bg-gray-900 rounded-xl p-2 sm:p-6 shadow-lg">
           <h2 className="text-base sm:text-xl font-semibold mb-2 sm:mb-4">Unmatched Mentors</h2>
@@ -201,8 +193,8 @@ export default function MatchingDashboard() {
                     >
                       <td className="p-2 sm:p-3">{mentor.user_id}</td>
                       <td className="p-2 sm:p-3">{mentor.mentee_capacity || 0}</td>
-                      <td className="p-2 sm:p-3">{mentor.broad_area_of_expertise || 'N/A'}</td>
-                      <td className="p-2 sm:p-3">{mentor.narrow_area_of_expertise || 'N/A'}</td>
+                      <td className="p-2 sm:p-3 whitespace-normal">{mentor.broad_area_of_expertise || 'N/A'}</td>
+                      <td className="p-2 sm:p-3 whitespace-normal">{mentor.narrow_area_of_expertise || 'N/A'}</td>
                     </tr>
                   ))}
                 </tbody>

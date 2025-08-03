@@ -9,7 +9,7 @@ export default function Matchmaking() {
   const handleMatchUsers = async () => {
     setIsLoading(true);
     setErrorMessage("");
-    setMatchedUsers([]); // Reset previous results
+    setMatchedUsers([]);
     try {
       const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/admin/matchusers`, { withCredentials: true });
       if (res.status === 200) {
@@ -35,7 +35,6 @@ export default function Matchmaking() {
     <div className="text-white p-2 sm:p-4 md:p-8 bg-black min-h-screen font-sans">
       <h1 className="text-lg sm:text-2xl md:text-3xl font-bold mb-4 sm:mb-6 text-center">Matchmaking</h1>
 
-      {/* Match Users Button */}
       <div className="flex justify-center mb-6 sm:mb-8">
         <button
           onClick={handleMatchUsers}
@@ -55,12 +54,10 @@ export default function Matchmaking() {
         </button>
       </div>
 
-      {/* Error or No Matches Message */}
       {errorMessage && (
         <div className="text-red-500 text-center mb-4 sm:mb-6 text-xs sm:text-base">{errorMessage}</div>
       )}
 
-      {/* Matched Users Table */}
       {matchedUsers.length > 0 && (
         <div className="bg-gray-900 rounded-xl p-2 sm:p-4 shadow-lg max-w-md sm:max-w-4xl mx-auto">
           <h2 className="text-base sm:text-xl font-semibold mb-2 sm:mb-4 text-center">Newly Matched Users</h2>
@@ -82,7 +79,7 @@ export default function Matchmaking() {
                   >
                     <td className="p-2 sm:p-3">{match.mentee_user_id}</td>
                     <td className="p-2 sm:p-3">{match.mentor_user_id}</td>
-                    <td className="p-2 sm:p-3">{match.common_areas.join(", ")}</td>
+                    <td className="p-2 sm:p-3 whitespace-normal">{match.common_areas.join(", ")}</td>
                     <td className="p-2 sm:p-3">{new Date(match.createdAt).toLocaleDateString()}</td>
                   </tr>
                 ))}
