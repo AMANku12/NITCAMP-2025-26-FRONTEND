@@ -1,0 +1,196 @@
+.homepage {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 30px;
+  padding: 40px 10%;
+    margin: 0 auto;
+}
+
+.main-img {
+
+  height: 400px;
+  width: auto;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: 5px;
+  object-fit: cover;
+}
+
+
+/* About sections */
+.about1, .about2, .about3, .about4, .about5 {
+  margin-bottom: 30px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.about1::before, .about2::before, .about3::before, .about4::before, .about5::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #1a237e, #5f7d7d);
+  border-radius: 20px 20px 0 0;
+}
+
+.about1:hover, .about2:hover, .about3:hover, .about4:hover, .about5:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.about-heading {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1a237e;
+  margin-bottom: 12px;
+  position: relative;
+  text-transform: capitalize;
+  letter-spacing: 0.5px;
+}
+
+.about-heading::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 50px;
+  height: 3px;
+  background: linear-gradient(90deg, #1a237e, #5f7d7d);
+  border-radius: 2px;
+}
+
+.about-text {
+  font-size: 17px;
+  color: #444;
+  line-height: 1.8;
+  margin-bottom: 15px;
+  text-align: justify;
+}
+
+/* Steps list styling */
+.steps-list {
+  margin-top: 20px;
+  list-style: none;
+  counter-reset: step-counter;
+}
+
+.step-item {
+  counter-increment: step-counter;
+  margin-bottom: 20px;
+  padding: 20px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-radius: 15px;
+  border-left: 5px solid #1a237e;
+  position: relative;
+  transition: all 0.3s ease;
+  font-size: 16px;
+  color: #333;
+}
+
+.step-item::before {
+  content: counter(step-counter);
+  position: absolute;
+  left: -15px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 30px;
+  height: 30px;
+  background: linear-gradient(135deg, #1a237e, #0d47a1);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 14px;
+  box-shadow: 0 4px 10px rgba(26, 35, 126, 0.3);
+}
+
+.step-item:hover {
+  transform: translateX(10px);
+  background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.signin-button {
+  margin-left: 15px;
+  padding: 10px 20px;
+  background: linear-gradient(135deg, #1a237e 0%, #0d47a1 100%);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 12px rgba(26, 35, 126, 0.3);
+}
+
+.signin-button:hover {
+  background: linear-gradient(135deg, #0d47a1 0%, #1a237e 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(26, 35, 126, 0.4);
+}
+
+.signin-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(26, 35, 126, 0.3);
+}
+
+/* Special styling for about5 */
+.about5 {
+  background: linear-gradient(135deg, rgba(26, 35, 126, 0.05) 0%, rgba(95, 125, 125, 0.05) 100%);
+  border: 2px solid rgba(26, 35, 126, 0.1);
+}
+
+/* Responsive design */
+@media (max-width: 1024px) {
+  .homepage {
+    grid-template-columns: 1fr;
+    gap: 25px;
+    padding: 30px 5%;
+  }
+}
+
+@media (max-width: 768px) {
+  .homepage {
+    padding: 25px 5%;
+  }
+  
+  .about1, .about2, .about3, .about4, .about5 {
+    padding: 15px;
+    margin-bottom: 20px;
+  }
+  
+  .about-heading {
+    font-size: 18px;
+  }
+  
+  .about-text {
+    font-size: 16px;
+  }
+  
+  .step-item {
+    padding: 15px;
+    margin-left: 20px;
+  }
+}
+
+.full-width-section {
+  margin-left: calc(-10%);
+  margin-right: calc(-10%);
+  width: calc(100% + 20%);
+}
