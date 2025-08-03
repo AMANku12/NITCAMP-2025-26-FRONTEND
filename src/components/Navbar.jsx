@@ -103,12 +103,23 @@ export default function Navbar() {
             <div className="flex items-center space-x-8">
               {isLoggedIn && user ? (
                 <div className="relative flex items-center gap-4">
-                  <button
-                    onClick={handleDashboard}
-                    className="px-5 py-2 bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-semibold rounded-full shadow-md hover:from-blue-600 hover:to-indigo-700 hover:scale-105 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-400"
-                  >
-                    Dashboard
-                  </button>
+                  {["mentor", "mentee"].includes(user.role) && (
+                    <button
+                      onClick={handleDashboard}
+                      className="px-5 py-2 bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-semibold rounded-full shadow-md hover:from-blue-600 hover:to-indigo-700 hover:scale-105 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                    >
+                      Dashboard
+                    </button>
+                  )}
+                  {/* Register link for newuser */}
+                  {user.role === "newuser" && (
+                    <Link
+                      to="/choice"
+                      className="px-5 py-2 bg-gradient-to-r from-green-500 to-blue-500 text-white font-semibold rounded-full shadow-md hover:from-green-600 hover:to-blue-700 hover:scale-105 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-green-400"
+                    >
+                      Register
+                    </Link>
+                  )}
                   <button
                     onClick={() => setDropdownOpen(o => !o)}
                     className="flex items-center gap-2 px-3 py-2 text-blue-100 hover:text-white transition-colors duration-200"
@@ -147,7 +158,6 @@ export default function Navbar() {
                             >
                               Logout
                             </button>
-                            
                           </li>
                         </ul>
                       </motion.div>
@@ -251,10 +261,22 @@ export default function Navbar() {
                     </Link>
                   </motion.div>
                 ))}
+                {/* Register link for newuser in mobile menu */}
+                {isLoggedIn && user && user.role === "newuser" && (
+                  <motion.div variants={ANIMATION_VARIANTS.menuItem} transition={{ delay: (filteredNav.length) * 0.05 }}>
+                    <Link
+                      to="/choice"
+                      onClick={() => setMenuOpen(false)}
+                      className="relative block px-4 py-3 bg-gradient-to-r from-green-500 to-blue-500 text-white font-semibold rounded-full shadow-md hover:from-green-600 hover:to-blue-700 hover:scale-105 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-green-400"
+                    >
+                      Register
+                    </Link>
+                  </motion.div>
+                )}
                 {isLoggedIn && (
                   <>
                     {["mentor", "mentee"].includes(user.role) && (
-                      <motion.div variants={ANIMATION_VARIANTS.menuItem} transition={{ delay: (filteredNav.length) * 0.05 }}>
+                      <motion.div variants={ANIMATION_VARIANTS.menuItem} transition={{ delay: (filteredNav.length + 1) * 0.05 }}>
                         <Link
                           to={user.role === "mentor" ? "/mentorprofile" : "/menteeprofile"}
                           onClick={() => setMenuOpen(false)}
@@ -265,7 +287,7 @@ export default function Navbar() {
                         </Link>
                       </motion.div>
                     )}
-                    <motion.div variants={ANIMATION_VARIANTS.menuItem} transition={{ delay: (filteredNav.length + 1) * 0.05 }}>
+                    <motion.div variants={ANIMATION_VARIANTS.menuItem} transition={{ delay: (filteredNav.length + 2) * 0.05 }}>
                       <button
                         onClick={handleLogout}
                         className="relative w-full text-left px-4 py-3 text-red-400 hover:text-red-300 transition-colors duration-200 group"
