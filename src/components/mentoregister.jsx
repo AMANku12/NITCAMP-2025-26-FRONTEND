@@ -98,6 +98,13 @@ const MentorRegistrationForm = () => {
     if (!formData.mentoringType) newErrors.mentoringType = 'Mentoring type is required';
     if (formData.mentoringType === 'one-on-one' && !formData.menteeCapacity.trim()) {
       newErrors.menteeCapacity = 'Mentee capacity is required for one-on-one mentoring';
+    } else if (
+      formData.mentoringType === 'one-on-one' &&
+      (isNaN(formData.menteeCapacity) ||
+        parseInt(formData.menteeCapacity) < 1 ||
+        parseInt(formData.menteeCapacity) > 5)
+    ) {
+      newErrors.menteeCapacity = 'Mentee capacity must be between 1 and 5';
     }
     
     setErrors(newErrors);

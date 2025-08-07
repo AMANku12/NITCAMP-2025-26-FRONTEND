@@ -63,7 +63,7 @@ const App = () => {
   const hideNavbarPaths = ["/home", "/adminpanel", "/adminlogin"];
   const shouldHideNavbar = hideNavbarPaths.includes(location.pathname);
   return (
-    <div className="flex flex-col min-h-screen bg-white dark:bg-gray-900">
+    <div className="flex flex-col min-h-screen bg-white p-4 dark:bg-gray-900">
       {/* Show navbar on all pages EXCEPT /home page */}
       {!shouldHideNavbar && <Navbar />}
       <main className="flex-1 pt-0 w-full max-w-full">
