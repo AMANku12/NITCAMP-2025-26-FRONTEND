@@ -29,7 +29,6 @@ const MentorRegistrationForm = () => {
   ];
 
   const currentYear = new Date().getFullYear();
-  const years = Array.from({ length: 50 }, (_, i) => currentYear - i);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -94,7 +93,15 @@ const MentorRegistrationForm = () => {
     
     if (!formData.nitcDegree.trim()) newErrors.nitcDegree = 'Degree pursued at NITC is required';
     if (!formData.department) newErrors.department = 'Department is required';
-    if (!formData.yearGraduated) newErrors.yearGraduated = 'Year graduated is required';
+    if (!formData.yearGraduated) {
+      newErrors.yearGraduated = 'Year graduated is required';
+    } else if (
+      isNaN(formData.yearGraduated) ||
+      parseInt(formData.yearGraduated) < 1947 ||
+      parseInt(formData.yearGraduated) > currentYear
+    ) {
+      newErrors.yearGraduated = `Year must be between 1947 and ${currentYear}`;
+    }
     if (!formData.mentoringType) newErrors.mentoringType = 'Mentoring type is required';
     if (formData.mentoringType === 'one-on-one' && !formData.menteeCapacity.trim()) {
       newErrors.menteeCapacity = 'Mentee capacity is required for one-on-one mentoring';
@@ -225,17 +232,16 @@ const MentorRegistrationForm = () => {
                       <Calendar className="inline w-4 h-4 mr-1" />
                       Year Graduated <span className="text-red-600">*</span>
                     </label>
-                    <select
+                    <input
+                      type="number"
                       name="yearGraduated"
                       value={formData.yearGraduated}
                       onChange={handleInputChange}
+                      min="1947"
+                      max={currentYear}
+                      placeholder="e.g. 2022"
                       className={`w-full px-2 sm:px-4 py-2 rounded-xl border focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all text-xs sm:text-sm bg-white shadow-sm ${errors.yearGraduated ? 'border-red-400 focus:ring-red-300 bg-red-50' : formData.yearGraduated ? 'border-blue-300 bg-blue-50' : 'border-gray-300'}`}
-                    >
-                      <option value="">Select Year</option>
-                      {years.map((year) => (
-                        <option key={year} value={year}>{year}</option>
-                      ))}
-                    </select>
+                    />
                     {errors.yearGraduated && <p className="text-red-600 text-xs mt-1">{errors.yearGraduated}</p>}
                   </div>
 
