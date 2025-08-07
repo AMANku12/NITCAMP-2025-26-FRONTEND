@@ -23,7 +23,7 @@ export default function MenteesDatabase({ onBack }) {
 
   if (loading) {
     return (
-      <div className="text-white p-2 sm:p-4">
+      <div className="text-white w-full">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-2 sm:mb-4 gap-2 sm:gap-3">
           <h2 className="text-lg sm:text-2xl font-bold">Mentees Database</h2>
           <button onClick={onBack} className="px-4 sm:px-6 py-1 sm:py-2 bg-white text-black rounded-full hover:bg-gray-100 transition-colors font-medium text-xs sm:text-base">
@@ -63,7 +63,7 @@ export default function MenteesDatabase({ onBack }) {
       </div>
 
       {/* Mobile/Small Tablet view - Card layout */}
-      <div className="block lg:hidden space-y-2 sm:space-y-4">
+      <div className="block lg:hidden space-y-2">
         {mentees.map((mentee, idx) => (
           <div key={mentee.id || idx} className="bg-white text-black rounded-xl p-2 sm:p-4">
             <div className="flex justify-between items-start mb-2 sm:mb-3">
@@ -85,8 +85,8 @@ export default function MenteesDatabase({ onBack }) {
       </div>
 
       {/* Desktop view - Responsive Table layout */}
-      <div className="hidden lg:block">
-        <div className="overflow-x-auto">
+      <div className="hidden lg:block w-full">
+        <div className="overflow-x-auto w-full">
           <table className="w-full text-black bg-white rounded-xl overflow-hidden text-xs sm:text-sm">
             <thead className="bg-gray-200 text-xs">
               <tr>

@@ -44,7 +44,7 @@ const About = () => {
     <div className="min-h-screen bg-gray-50">
       {/* Add top padding to account for fixed navbar */}
       <div className="pt-20 pb-16">
-        <div className="max-w-3xl mx-auto px-2 sm:px-4">
+        <div className="w-full mx-auto px-2">
           {/* Intro Section */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -76,11 +76,11 @@ const About = () => {
                 
                 <button
                   onClick={() => toggleFAQ(index)}
-                  className="flex justify-between items-center w-full px-5 py-4 text-left font-medium bg-blue-50 hover:bg-blue-100 transition-colors duration-200"
+                  className="flex justify-between items-center w-full px-2 py-4 text-left font-medium bg-blue-50 hover:bg-blue-100 transition-colors duration-200"
                   aria-expanded={activeIndex === index}
                   aria-controls={`faq-${index}`}
                 >
-                  <span className="text-[#1e3a8a] text-xs sm:text-md pr-4">{faq.question}</span>
+                  <span className="text-[#1e3a8a] text-xs sm:text-md pr-2">{faq.question}</span>
                   <motion.svg
                     className="w-5 h-5 text-[#1e3a8a] flex-shrink-0"
                     fill="none"
@@ -123,7 +123,7 @@ const About = () => {
                       style={{ overflow: 'hidden' }}
                       className="bg-blue-50"
                     >
-                      <div className="px-5 py-4 text-gray-700 text-sm leading-relaxed">
+                      <div className="px-2 py-4 text-gray-700 text-sm leading-relaxed">
                         <p>{faq.answer}</p>
                       </div>
                     </motion.div>

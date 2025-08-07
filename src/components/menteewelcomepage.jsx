@@ -4,7 +4,7 @@ const MenteeWelcomePage = () => {
   return (
     <div className="min-h-screen bg-white">
       <div className="min-h-screen flex items-center justify-center">
-        <div className="w-full max-w-4xl mx-auto px-4 sm:px-8 md:px-16">
+        <div className="w-full">
           
           {/* Main Welcome Section */}
           <div className="text-center mb-10 sm:mb-16">

@@ -71,7 +71,7 @@ export default function MatchingDashboard() {
   };
 
   return (
-    <div className="text-white p-2 sm:p-4 md:p-8 bg-black min-h-screen">
+    <div className="text-white bg-black min-h-screen w-full">
       <h1 className="text-lg sm:text-2xl md:text-3xl font-bold mb-4 sm:mb-6">Matching Dashboard</h1>
       
       <div className="flex flex-col sm:flex-row flex-wrap gap-2 sm:gap-4 mb-6 sm:mb-8">
@@ -102,7 +102,7 @@ export default function MatchingDashboard() {
       )}
 
       {view === 'matchedUsers' && !isLoading && (
-        <div className="bg-gray-900 rounded-xl p-2 sm:p-6 shadow-lg">
+        <div className="bg-gray-900 rounded-xl shadow-lg w-full">
           <h2 className="text-base sm:text-xl font-semibold mb-2 sm:mb-4">Matched Users</h2>
           {matchedUsers.length === 0 ? (
             <p className="text-gray-400 text-xs sm:text-base">No matched users found.</p>

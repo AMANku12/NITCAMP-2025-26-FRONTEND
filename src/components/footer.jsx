@@ -2,8 +2,8 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="bg-white dark:bg-neutral-900 text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 px-2 sm:px-6 py-6 sm:py-8 border-t dark:border-neutral-700">
-      <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-6 text-center sm:text-left">
+    <footer className="bg-white dark:bg-neutral-900 text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 py-6 sm:py-8 border-t dark:border-neutral-700 w-full">
+      <div className="w-full grid grid-cols-1 sm:grid-cols-3 gap-6 text-center sm:text-left">
         {/* Contact Section */}
         <div>
           <h3 className="font-semibold text-neutral-800 dark:text-white mb-2">Contact Us</h3>

@@ -10,8 +10,8 @@ const ProfilePage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white flex items-center justify-center p-2 sm:p-4">
-      <div className="bg-white p-4 sm:p-8 max-w-sm w-full sm:max-w-md">
+    <div className="min-h-screen bg-white flex items-center justify-center">
+      <div className="bg-white w-full">
         <div className="text-center mb-8">
           <h1 className="text-xl sm:text-2xl font-bold text-blue-950 mb-2">
 

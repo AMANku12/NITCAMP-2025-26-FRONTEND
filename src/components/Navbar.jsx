@@ -91,7 +91,7 @@ export default function Navbar() {
       <motion.nav {...ANIMATION_VARIANTS.navbar}
         className="fixed w-full bg-blue-950/95 backdrop-blur-md z-50 border-b border-blue-800"
       >
-        <div className="max-w-7xl mx-auto px-2 sm:px-4 md:px-6 lg:px-8">
+        <div className="w-full">
           <div className="flex items-center justify-between h-20">
             <Link to="/" className="flex items-center" aria-label="Home">
               <img src={logo} alt="Logo" className="h-10 md:h-12 w-auto" />
@@ -324,5 +324,5 @@ export default function Navbar() {
       </motion.nav>
       <div className="h-20" />
     </>
-  );
+  );                                                                                                                                                                                                                                                                                                              
 }

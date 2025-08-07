@@ -88,7 +88,7 @@ export default function MentorInterests({ onBack }) {
   };
 
   return (
-    <div className="min-h-screen bg-white p-2 sm:p-6 text-xs sm:text-base">
+    <div className="min-h-screen bg-white text-xs sm:text-base">
       <h1 className="text-base sm:text-2xl font-bold mb-6">Mentor Interests</h1>
 
       {/* Broad Areas */}

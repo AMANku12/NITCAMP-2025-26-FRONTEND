@@ -89,7 +89,7 @@ export default function MentorProfilePage() {
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <div className="bg-white border-b border-gray-100">
-        <div className="max-w-3xl mx-auto px-2 sm:px-6 py-6 sm:py-8">
+        <div className="w-full py-6 sm:py-8">
           <h1 className="text-2xl font-semibold text-center text-gray-900">
             Mentor Profile
           </h1>
@@ -97,7 +97,7 @@ export default function MentorProfilePage() {
       </div>
 
       {/* Main Content */}
-      <div className="max-w-3xl mx-auto px-6 py-12">
+      <div className="w-full py-12">
         {/* Profile Image */}
         <div className="flex justify-center mb-12">
           <div className="relative">

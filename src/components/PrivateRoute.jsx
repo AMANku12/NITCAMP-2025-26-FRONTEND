@@ -9,21 +9,30 @@ const PrivateRoute = ({ allowedRoles = [] }) => {
 
   useEffect(() => {
     const verifySession = async () => {
-      try {
-        // Verify session with backend
-        await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/verify-session`, {
-          withCredentials: true,
-        });
+      if(import.meta.env.VITE_BYPASS_SESSION_CHECK === "true") {
+        console.log(import.meta.env.VITE_BYPASS_SESSION_CHECK);
         setIsAuthenticated(true);
-      } catch (error) {
-        console.error("Session verification failed:", error);
-        setIsAuthenticated(false);
-        localStorage.removeItem("user");
-        localStorage.removeItem("menteeData");
-        localStorage.removeItem("mentorData");
-        localStorage.removeItem("admin");
-      }
-    };
+        console.warn("Bypassing session check as per environment variable.");
+        return;
+        
+      } else {
+        try {
+          // Verify session with backend
+          await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/verify-session`, {
+            withCredentials: true,
+        });
+          console.log("Session verified successfully.");
+        setIsAuthenticated(true);
+        } catch (error) {
+          console.error("Session verification failed:", error);
+          setIsAuthenticated(false);
+          localStorage.removeItem("user");
+          localStorage.removeItem("menteeData");
+          localStorage.removeItem("mentorData");
+          localStorage.removeItem("admin");
+        }
+    }
+  }
     verifySession();
   }, []);
 

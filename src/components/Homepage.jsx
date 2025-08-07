@@ -96,7 +96,7 @@ const Homepage = () => {
   }, [currentTestimonialIndex]);
 
   return (
-    <div className="bg-white max-w-full text-gray-800 font-sans" style={{ fontFamily: 'Arial, sans-serif' }}>
+    <div className="bg-white w-full text-gray-800 font-sans" style={{ fontFamily: 'Arial, sans-serif' }}>
 
       {/* Hero Section with Image and Welcome Text */}
       <section className="relative">
@@ -128,7 +128,7 @@ const Homepage = () => {
         </div>
       </section>
 
-      <div className="max-w-full mx-auto px-6 py-16 space-y-20">
+      <div className="w-full mx-auto px-4 py-12 space-y-12">
         {/* What is this program about */}
         <section className="">
           <h2 className="text-3xl font-bold text-gray-800 mb-6">
@@ -145,7 +145,7 @@ const Homepage = () => {
             Eligibility Criterion
           </h2>
           
-          <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-6 w-full mx-auto">
             <div className="p-8 border border-gray-200 rounded-lg">
               <h3 className="text-xl font-semibold text-[#043871] mb-4">Students/Mentees</h3>
               <p className="text-gray-600 leading-relaxed mb-4">
@@ -173,17 +173,17 @@ const Homepage = () => {
         </section>
 
         {/* Program Overview and Timeline */}
-        <section className="bg-gradient-to-b from-[#f8fbff] to-white py-20 px-4 max-w-full">
-  <div className="max-w-5xl mx-auto text-center">
+        <section className="bg-gradient-to-b from-[#f8fbff] to-white py-12 px-2 w-full">
+  <div className="w-full mx-auto text-center">
     <h2 className="text-3xl md:text-4xl font-semibold text-gray-800 mb-6 tracking-tight">
       Program Overview & Timeline
     </h2>
-    <p className="text-gray-600 text-base md:text-lg max-w-3xl mx-auto leading-relaxed mb-14">
+    <p className="text-gray-600 text-base md:text-lg w-full mx-auto leading-relaxed mb-10">
       This annual program begins in early August. Here's how it unfolds through the academic year:
     </p>
   </div>
 
-  <div className="grid gap-8 md:grid-cols-2 max-w-6xl mx-auto">
+  <div className="grid gap-6 md:grid-cols-2 w-full mx-auto">
     {[
       {
         step: "1",
@@ -247,10 +247,10 @@ const Homepage = () => {
           </h2><p className="text-lg text-gray-700 leading-relaxed mb-8 ">
             NITCAMP strives to connect the current students with the best alumni in their field of interest. Students are encouraged to have conversations with their mentors throughout the academic year. This can help in getting insights into their career choice or what to expect at an international institution for higher studies. While career-related discussions are highly encouraged, please note that this is NOT a platform for the students to request for internships or job opportunities from their mentors. 
             </p>
-          <div className="max-w-4xl mx-auto">
+          <div className="w-full mx-auto">
             
             
-            <div className="grid md:grid-cols-2 gap-8">
+            <div className="grid md:grid-cols-2 gap-6">
               <div className="bg-green-50 p-8 rounded-lg border border-green-200">
                 <h3 className="text-xl font-semibold text-green-800 mb-4 flex items-center gap-2">
                   What you can discuss
@@ -293,13 +293,13 @@ const Homepage = () => {
         </section>
 
         {/* Why trust this program */}
-        <section className="bg-white px-6 py-16 rounded-3xl shadow-sm border border-gray-200">
-  <div className="max-w-5xl mx-auto space-y-12">
+        <section className="bg-white px-2 py-10 rounded-3xl shadow-sm border border-gray-200 w-full">
+  <div className="w-full mx-auto space-y-8">
     <h2 className="text-3xl md:text-4xl font-semibold text-center text-gray-800 tracking-tight">
       Why should I trust this program?
     </h2>
 
-    <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
       {[
         {
           icon: "🏛️",
@@ -369,7 +369,7 @@ const Homepage = () => {
             <div className={`transition-opacity duration-300 ${isTestimonialAnimating ? 'opacity-0' : 'opacity-100'}`}>
               <div className="text-6xl text-blue-200 mb-4">"</div>
               <div className="relative w-full">
-                <p className="italic text-gray-700 text-lg leading-relaxed mb-6 text-center max-w-2xl mx-auto min-h-[120px] flex items-center justify-center">
+                <p className="italic text-gray-700 text-lg leading-relaxed mb-6 text-center w-full mx-auto min-h-[120px] flex items-center justify-center">
                   {testimonials[currentTestimonialIndex].quote}
                 </p>
               </div>

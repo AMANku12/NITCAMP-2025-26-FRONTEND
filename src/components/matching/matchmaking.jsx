@@ -32,7 +32,7 @@ export default function Matchmaking() {
   };
 
   return (
-    <div className="text-white p-2 sm:p-4 md:p-8 bg-black min-h-screen font-sans">
+    <div className="text-white bg-black min-h-screen font-sans w-full">
       <h1 className="text-lg sm:text-2xl md:text-3xl font-bold mb-4 sm:mb-6 text-center">Matchmaking</h1>
 
       <div className="flex justify-center mb-6 sm:mb-8">
@@ -59,7 +59,7 @@ export default function Matchmaking() {
       )}
 
       {matchedUsers.length > 0 && (
-        <div className="bg-gray-900 rounded-xl p-2 sm:p-4 shadow-lg max-w-md sm:max-w-4xl mx-auto">
+        <div className="bg-gray-900 rounded-xl shadow-lg w-full">
           <h2 className="text-base sm:text-xl font-semibold mb-2 sm:mb-4 text-center">Newly Matched Users</h2>
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse text-xs sm:text-base">

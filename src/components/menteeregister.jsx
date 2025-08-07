@@ -2,6 +2,9 @@ import { useState, useContext, createContext, useEffect } from 'react';
 import { User, Phone, Mail, BookOpen, Calendar, GraduationCap, MessageSquare, CheckCircle, Loader2 } from 'lucide-react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import PhoneInput from 'react-phone-number-input';
+import 'react-phone-number-input/style.css';
+import { isValidPhoneNumber } from 'libphonenumber-js';
 
 // Create Context for form data
 const FormDataContext = createContext(null);
@@ -52,9 +55,6 @@ const apiCall = async (endpoint, data = null, method = 'GET') => {
   if (data && method !== 'GET') {
     config.body = JSON.stringify(data);
   }
-
-  // Include credentials for authentication if needed
-  // config.credentials = 'include';
 
   const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}${endpoint}`, config);
   
@@ -169,14 +169,38 @@ function MenteeRegistrationForm() {
     }
   };
 
+  const handlePhoneChange = (value) => {
+    const updatedData = {
+      ...formData,
+      phoneNo: value || ''
+    };
+    setFormData(updatedData);
+    updateMenteeFormData(updatedData);
+
+    if (value) {
+      setErrors(prev => ({
+        ...prev,
+        phoneNo: isValidPhoneNumber(value) ? '' : 'Invalid phone number format'
+      }));
+    } else {
+      setErrors(prev => ({
+        ...prev,
+        phoneNo: ''
+      }));
+    }
+
+    if (apiError) {
+      setApiError('');
+    }
+  };
+
   const validateForm = () => {
     const newErrors = {};
 
-    // Only validate editable fields for user input
     if (!formData.phoneNo.trim()) {
       newErrors.phoneNo = 'Phone number is required';
-    } else if (!/^\d{10}$/.test(formData.phoneNo)) {
-      newErrors.phoneNo = 'Phone number must be 10 digits';
+    } else if (!isValidPhoneNumber(formData.phoneNo)) {
+      newErrors.phoneNo = 'Invalid phone number format';
     }
 
     if (!formData.personalEmail.trim()) {
@@ -301,19 +325,13 @@ function MenteeRegistrationForm() {
                       <Phone className="inline w-4 h-4 mr-1" />
                       Phone No <span className="text-red-600">*</span>
                     </label>
-                    <input
-                      type="tel"
-                      name="phoneNo"
+                    <PhoneInput
+                      international
+                      defaultCountry="IN"
                       value={formData.phoneNo}
-                      onChange={handleInputChange}
-                      className={`w-full px-2 sm:px-4 py-2 sm:py-3 rounded-2xl border-2 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-blue-100 text-xs sm:text-base ${
-                        errors.phoneNo 
-                          ? 'border-red-400 bg-red-50' 
-                          : formData.phoneNo.trim() 
-                            ? 'border-blue-300 bg-blue-50' 
-                            : 'border-gray-200 focus:border-blue-400'
-                      }`}
-                      placeholder="Enter 10-digit phone number"
+                      onChange={handlePhoneChange}
+                      className={`w-full px-2 sm:px-4 py-2 sm:py-3 rounded-2xl border-2 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-blue-100 text-xs sm:text-base ${errors.phoneNo ? 'border-red-400 bg-red-50' : formData.phoneNo.trim() ? 'border-blue-300 bg-blue-50' : 'border-gray-200 focus:border-blue-400'}`}
+                      placeholder="Enter phone number"
                     />
                     {errors.phoneNo && <p className="text-red-600 text-xs mt-1">{errors.phoneNo}</p>}
                   </div>
@@ -391,13 +409,7 @@ function MenteeRegistrationForm() {
                       name="personalEmail"
                       value={formData.personalEmail}
                       onChange={handleInputChange}
-                      className={`w-full px-2 sm:px-4 py-2 sm:py-3 rounded-2xl border-2 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-blue-100 text-xs sm:text-base ${
-                        errors.personalEmail 
-                          ? 'border-red-400 bg-red-50' 
-                          : formData.personalEmail.trim() 
-                            ? 'border-blue-300 bg-blue-50' 
-                            : 'border-gray-200 focus:border-blue-400'
-                      }`}
+                      className={`w-full px-2 sm:px-4 py-2 sm:py-3 rounded-2xl border-2 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-blue-100 text-xs sm:text-base ${errors.personalEmail ? 'border-red-400 bg-red-50' : formData.personalEmail.trim() ? 'border-blue-300 bg-blue-50' : 'border-gray-200 focus:border-blue-400'}`}
                       placeholder="Enter your email address"
                     />
                     {errors.personalEmail && <p className="text-red-600 text-xs mt-1">{errors.personalEmail}</p>}
@@ -413,11 +425,7 @@ function MenteeRegistrationForm() {
                       value={formData.expectations}
                       onChange={handleInputChange}
                       rows={6}
-                      className={`w-full px-2 sm:px-4 py-2 sm:py-3 rounded-2xl border-2 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-blue-100 resize-none text-xs sm:text-base ${
-                        formData.expectations.trim() 
-                          ? 'border-blue-300 bg-blue-50' 
-                          : 'border-gray-200 focus:border-blue-400'
-                      }`}
+                      className={`w-full px-2 sm:px-4 py-2 sm:py-3 rounded-2xl border-2 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-blue-100 resize-none text-xs sm:text-base ${formData.expectations.trim() ? 'border-blue-300 bg-blue-50' : 'border-gray-200 focus:border-blue-400'}`}
                       placeholder="Share your expectations and goals for this mentorship program..."
                     />
                   </div>
@@ -430,11 +438,7 @@ function MenteeRegistrationForm() {
                   type="button"
                   onClick={handleReset}
                   disabled={isSubmitting}
-                  className={`px-4 sm:px-8 py-2 sm:py-3 rounded-full font-medium transition-all duration-300 hover:shadow-lg text-xs sm:text-base ${
-                    isSubmitting 
-                      ? 'bg-gray-400 cursor-not-allowed' 
-                      : 'bg-gray-500 hover:bg-gray-600 text-white'
-                  }`}
+                  className={`px-4 sm:px-8 py-2 sm:py-3 rounded-full font-medium transition-all duration-300 hover:shadow-lg text-xs sm:text-base ${isSubmitting ? 'bg-gray-400 cursor-not-allowed' : 'bg-gray-500 hover:bg-gray-600 text-white'}`}
                 >
                   Reset Form
                 </button>

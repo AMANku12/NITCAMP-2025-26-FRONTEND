@@ -120,7 +120,7 @@ export default function MenteeInterests({
           onChange={e => setSearchBroad(e.target.value)}
           className="w-full p-2 border rounded mb-3"
         />
-        <div className="max-h-60 overflow-auto border rounded p-3">
+      <div className="max-h-60 overflow-auto border rounded">
           {filteredBroad.map(area => (
             <label key={area} className="block mb-1">
               <input

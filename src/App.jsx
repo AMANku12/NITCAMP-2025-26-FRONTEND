@@ -39,6 +39,11 @@ const App = () => {
 
   useEffect(() => {
     const verifySession = async () => {
+      if(import.meta.env.VITE_BYPASS_SESSION_CHECK === "true") {
+        console.log(import.meta.env.VITE_BYPASS_SESSION_CHECK);
+        console.warn("Bypassing session check as per environment variable.");
+        return;
+      }
       try {
         await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/verify-session`, {
           withCredentials: true,
@@ -61,7 +66,7 @@ const App = () => {
     <div className="flex flex-col min-h-screen bg-white dark:bg-gray-900">
       {/* Show navbar on all pages EXCEPT /home page */}
       {!shouldHideNavbar && <Navbar />}
-      <main className="flex-1 pt-0 px-2 sm:px-4 md:px-8 lg:px-16 xl:px-32 w-full max-w-full">
+      <main className="flex-1 pt-0 w-full max-w-full">
         <Routes>
           {/* Public Routes */}
           <Route path="/home" element={<Home />} />
