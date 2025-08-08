@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
+import axios from "axios";
 import PrivateRoute from "./components/PrivateRoute";
 
 // Components & Pages
@@ -43,6 +44,10 @@ const App = () => {
         console.log(import.meta.env.VITE_BYPASS_SESSION_CHECK);
         console.warn("Bypassing session check as per environment variable.");
         return;
+      }
+      const userString = localStorage.getItem("user");
+      if (!userString) {
+        return; // No user data, nothing to verify
       }
       try {
         await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/verify-session`, {
