@@ -1,10 +1,20 @@
-import React from "react";
+import {React, useState, useEffect} from "react";
 
 const MentorWelcomePage = () => {
+  const [mentorName, setMentorName] = useState("Mentor");
+
+  useEffect(() => {
+    const userString = localStorage.getItem("user");
+    if (userString) {
+      const user = JSON.parse(userString);
+      setMentorName(user.fullname || "Mentor");
+    }
+  }, []);
+
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-white w-full">
       <h1 className="text-2xl sm:text-4xl font-bold text-[#0A174E] mb-2 sm:mb-4">
-        Welcome, Mentor
+        Welcome, {mentorName}
       </h1>
 
       <p className="text-base sm:text-lg text-[#5B6C94] mb-4 sm:mb-8 text-center w-full">

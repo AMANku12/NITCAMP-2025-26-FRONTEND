@@ -1,6 +1,18 @@
-import React from "react";
+import React, { use, useEffect } from "react";
+import { useState } from "react";
 
 const MenteeWelcomePage = () => {
+  const [menteeName, setMenteeName] = useState("Mentee");
+
+  useEffect(()=>{
+    // Any side effects or data fetching can be done here
+    const userString = localStorage.getItem("user");
+    if (userString) {
+      const user = JSON.parse(userString);
+      setMenteeName(user.fullname || "Mentee");
+    }
+  }, [])
+
   return (
     <div className="min-h-screen bg-white">
       <div className="min-h-screen flex items-center justify-center">
@@ -10,7 +22,7 @@ const MenteeWelcomePage = () => {
           <div className="text-center mb-10 sm:mb-16">
             <div className="mb-4 sm:mb-6">
               <h1 className="text-3xl sm:text-5xl font-extralight text-[#0f172a] tracking-wide mb-2 sm:mb-4">
-                Welcome, <span className="font-medium">Mentee</span>
+                Welcome, <span className="font-medium">{menteeName}</span>
               </h1>
               <div className="w-16 sm:w-24 h-px bg-gradient-to-r from-transparent via-yellow-400 to-transparent mx-auto"></div>
             </div>

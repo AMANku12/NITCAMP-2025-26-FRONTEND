@@ -5,6 +5,15 @@ const MenteeDashboard = () => {
   const [mentor, setMentor] = useState(null);
   const [message, setMessage] = useState(null);
   const [showDetails, setShowDetails] = useState(false);
+  const [menteeName, setMenteeName] = useState("Mentee");
+
+  useEffect(() => {
+    const userString = localStorage.getItem("user");
+    if (userString) {
+      const user = JSON.parse(userString);
+      setMenteeName(user.fullname || "Mentee");
+    }
+  }, []);
 
   const handleGetAssignedMentees = async () => {
     try {
@@ -32,7 +41,7 @@ const MenteeDashboard = () => {
       <div className="w-full py-8 sm:py-12">
         <div className="text-center mb-12">
           <h1 className="text-xl sm:text-4xl md:text-5xl font-bold text-gray-800 mb-4">
-            Welcome, Mentee!
+            Welcome, <span className="font-medium">{menteeName}</span>
           </h1>
           <div className="w-24 h-1 bg-gradient-to-r from-yellow-400 to-blue-500 mx-auto mb-6"></div>
           <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">

@@ -109,12 +109,14 @@ export default function Navbar() {
                     </button>
                   )}
                   {user.role === "newuser" && (
-                    <Link
-                      to="/choice"
-                      className="px-5 py-2 bg-gradient-to-r from-green-500 to-blue-500 text-white font-semibold rounded-full shadow-md hover:from-green-600 hover:to-blue-700 hover:scale-105 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-green-400"
-                    >
-                      Register
-                    </Link>
+                    location.pathname === "/" && (
+                      <Link
+                        to="/choice"
+                        className="px-5 py-2 bg-gradient-to-r from-green-500 to-blue-500 text-white font-semibold rounded-full shadow-md hover:from-green-600 hover:to-blue-700 hover:scale-105 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-green-400"
+                      >
+                        Register
+                      </Link>
+                    )
                   )}
                   <button
                     onClick={() => setDropdownOpen(o => !o)}
