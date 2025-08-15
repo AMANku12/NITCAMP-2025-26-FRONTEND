@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { User, Phone, Mail, BookOpen, Calendar, GraduationCap, Users, Target, CheckCircle } from 'lucide-react';
 import axios from 'axios';
@@ -17,6 +16,19 @@ const MentorRegistrationForm = () => {
     menteeCapacity: '',
     mentoringType: ''
   });
+
+  // Restore draft if user returned from the interests page
+  useEffect(() => {
+    try {
+      const draft = localStorage.getItem('mentorFormDraft');
+      if (draft) {
+        const parsed = JSON.parse(draft);
+        setFormData(prev => ({ ...prev, ...parsed }));
+      }
+    } catch (err) {
+      console.error('Failed to load mentor form draft:', err);
+    }
+  }, []);
 
   const [departments, setDepartments] = useState([]);
   const [degrees, setDegrees] = useState([]);
@@ -53,6 +65,14 @@ const MentorRegistrationForm = () => {
     
     if (errors[name]) {
       setErrors(prev => ({ ...prev, [name]: '' }));
+    }
+
+    // Save draft after every change
+    try {
+      const next = { ...formData, [name]: value };
+      localStorage.setItem('mentorFormDraft', JSON.stringify(next));
+    } catch (err) {
+      console.error('Failed to save mentor form draft:', err);
     }
   };
 
@@ -131,7 +151,14 @@ const MentorRegistrationForm = () => {
         mentee_capacity: formData.mentoringType === 'community-mentoring' ? 1 : parseInt(formData.menteeCapacity)
       };
 
-      localStorage.setItem("mentorData", JSON.stringify(mentorData));
+      // Save draft to persist values if user navigates out and returns
+      try {
+        localStorage.setItem('mentorFormDraft', JSON.stringify(formData));
+        localStorage.setItem('mentorData', JSON.stringify(mentorData));
+      } catch (err) {
+        console.error('Failed to save mentor draft on submit:', err);
+      }
+
       navigate("/mentorinterests");
     }
   };
@@ -147,6 +174,13 @@ const MentorRegistrationForm = () => {
       mentoringType: ''
     });
     setErrors({});
+
+    // Clear draft
+    try {
+      localStorage.removeItem('mentorFormDraft');
+    } catch (err) {
+      console.error('Failed to clear mentor form draft:', err);
+    }
   };
 
   return (

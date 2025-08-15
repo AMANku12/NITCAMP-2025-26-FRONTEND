@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { use, useState } from "react";
 import axios from "axios";
 
 const MentorDashboard = () => {
@@ -7,6 +7,15 @@ const MentorDashboard = () => {
   const [error, setError] = useState(null);
   const [hasFetched, setHasFetched] = useState(false);
   const [expandedMenteeId, setExpandedMenteeId] = useState(null);
+  const [mentorName, setMentorName] = useState("Mentor");
+
+  useEffect(() => {
+    const userString = localStorage.getItem("user");
+    if (userString) {
+      const user = JSON.parse(userString);
+      setMentorName(user.fullname || "Mentor");
+    }
+  }, []);
 
   const handleGetAssignedMentees = async () => {
     setLoading(true);
@@ -38,7 +47,7 @@ const MentorDashboard = () => {
         {/* Welcome Section */}
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
-            Welcome, Mentor!
+            Welcome, <span className="font-medium">{mentorName}</span>
           </h1>
           <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-yellow-400 mx-auto mb-6"></div>
           <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">

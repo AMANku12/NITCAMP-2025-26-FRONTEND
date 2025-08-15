@@ -87,6 +87,11 @@ export default function MentorInterests({ onBack }) {
     }
   };
 
+  const handleBack = () => {
+    // go back to the previous page (mentor registration)
+    navigate(-1);
+  };
+
   return (
     <div className="min-h-screen bg-white text-xs sm:text-base">
       <h1 className="text-base sm:text-2xl font-bold mb-6">Mentor Interests</h1>
@@ -164,7 +169,7 @@ export default function MentorInterests({ onBack }) {
       {/* Action Buttons */}
       <div className="flex justify-between">
         <button
-          onClick={() => navigate(-1)}
+          onClick={handleBack}
           className="px-2 sm:px-4 py-1 sm:py-2 bg-gray-300 rounded text-xs sm:text-base"
         >
           ← Back

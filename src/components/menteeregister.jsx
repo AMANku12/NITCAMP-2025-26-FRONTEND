@@ -104,12 +104,12 @@ function MenteeRegistrationForm() {
     const fetchInitialInfo = async () => {
       setIsLoading(true);
       setApiError('');
-      
+
       try {
         const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/menteeinitialinfo`, {
           withCredentials: true
         });
-        
+
         // Extract data from response (adjust based on your API response structure)
         const userData = res.data.menteeExtraInfo || res;
         const { roll_no, year_of_admission, degree, branch } = userData;
@@ -125,15 +125,28 @@ function MenteeRegistrationForm() {
           degree: degree || ''
         };
 
-        console.log(updatedData);
+        // If there's a saved draft, let the draft values take precedence so user input is not lost
+        const draftRaw = localStorage.getItem('menteeFormDraft');
+        if (draftRaw) {
+          try {
+            const draft = JSON.parse(draftRaw);
+            const merged = { ...updatedData, ...draft };
+            setFormData(merged);
+            updateMenteeFormData(merged);
+          } catch (e) {
+            // If draft is corrupted, fall back to fetched data
+            setFormData(updatedData);
+            updateMenteeFormData(updatedData);
+          }
+        } else {
+          setFormData(updatedData);
+          updateMenteeFormData(updatedData);
+        }
 
-        setFormData(updatedData);
-        updateMenteeFormData(updatedData);
-        
       } catch (error) {
         console.error("Failed to fetch initial info:", error);
         setApiError('Failed to load initial information. Please refresh the page.');
-        
+
       } finally {
         setIsLoading(false);
       }
@@ -148,13 +161,20 @@ function MenteeRegistrationForm() {
       ...formData,
       [name]: value
     };
-    
+
     // Update local state
     setFormData(updatedData);
-    
+
+    // Persist draft to localStorage on every change
+    try {
+      localStorage.setItem('menteeFormDraft', JSON.stringify(updatedData));
+    } catch (err) {
+      console.warn('Failed to save mentee draft:', err);
+    }
+
     // Update context (persistent state)
     updateMenteeFormData(updatedData);
-    
+
     // Clear error when user starts typing
     if (errors[name]) {
       setErrors(prev => ({
@@ -175,6 +195,14 @@ function MenteeRegistrationForm() {
       phoneNo: value || ''
     };
     setFormData(updatedData);
+
+    // Persist draft to localStorage on phone change
+    try {
+      localStorage.setItem('menteeFormDraft', JSON.stringify(updatedData));
+    } catch (err) {
+      console.warn('Failed to save mentee draft:', err);
+    }
+
     updateMenteeFormData(updatedData);
 
     if (value) {
@@ -229,6 +257,13 @@ function MenteeRegistrationForm() {
   const handleSubmit = async () => {
     if (!validateForm()) return;
 
+    // Save a draft as a safety net (so Back from interests restores values)
+    try {
+      localStorage.setItem('menteeFormDraft', JSON.stringify(formData));
+    } catch (err) {
+      console.warn('Failed to save mentee draft on submit:', err);
+    }
+
     localStorage.setItem("menteeData", JSON.stringify(formData));
 
     setApiError('');
@@ -250,9 +285,17 @@ function MenteeRegistrationForm() {
       personalEmail: '',
       expectations: ''
     };
-    
+
     setFormData(resetData);
     updateMenteeFormData(resetData);
+
+    // Remove saved draft when user explicitly resets the form
+    try {
+      localStorage.removeItem('menteeFormDraft');
+    } catch (err) {
+      console.warn('Failed to remove mentee draft on reset:', err);
+    }
+
     setErrors({});
     setApiError('');
     setSubmitSuccess(false);
