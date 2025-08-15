@@ -11,7 +11,7 @@ const MenteeWelcomePage = () => {
       const user = JSON.parse(userString);
       setMenteeName(user.fullname || "Mentee");
     }
-  }, [])
+  }, []);
 
   return (
     <div className="min-h-screen bg-white">
